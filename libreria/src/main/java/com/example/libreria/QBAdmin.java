@@ -41,6 +41,7 @@ public class QBAdmin {
         QBUsers.signIn(user, new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser user, Bundle params) {
+                System.out.println("Usuario: " + usuario + ". Passw: " +password);
                 listener.logeado(true);
             }
 
@@ -48,7 +49,6 @@ public class QBAdmin {
             public void onError(QBResponseException errors) {
                 System.out.println(errors+" !!!!!");
                 System.out.println("Usuario: " + usuario + ". Passw: " +password);
-                listener.logeado(false);
             }
         });
     }
@@ -57,14 +57,13 @@ public class QBAdmin {
 
     public void registrarse(String usuario, String password, String email){
 
-        final QBUser user = new QBUser(usuario, password);
-        user.setEmail(email);
+        final QBUser user = new QBUser(usuario, email, password);
 
         QBUsers.signUp(user, new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser user, Bundle args) {
                 System.out.println("USUARIO REGISTRADO CON ÉXITO.");
-
+                listener.registrado(true);
             }
 
             @Override

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public interface QBAdminListener {
 
     public void logeado (boolean blLogeado);
+    public void registrado (boolean blRegistrado);
     public  void datosDescargados (ArrayList<QBBaseCustomObject> datos);
 
 }

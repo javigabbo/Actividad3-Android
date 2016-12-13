@@ -1,5 +1,6 @@
 package com.example.javigabbo.actividad3;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -13,15 +14,21 @@ import java.util.ArrayList;
  * Created by Javigabbo on 28/11/16.
  */
 
-public class Controlador implements View.OnClickListener{
+public class Controlador implements View.OnClickListener, QBAdminListener{
 
     MainActivity vista;
+    Intent intent = null;
+
+
+
 
 
     public Controlador(MainActivity vista){
         this.vista = vista;
-
+        intent = new Intent(vista, Main2Activity.class);
     }
+
+
 
 
 
@@ -48,4 +55,24 @@ public class Controlador implements View.OnClickListener{
     }
 
 
+    @Override
+    public void logeado(boolean blLogeado) {
+        if (blLogeado) {
+            vista.startActivity(intent);
+            vista.finish();
+        }
+    }
+
+    @Override
+    public void registrado(boolean blRegistrado) {
+        if (blRegistrado) {
+            vista.startActivity(intent);
+            vista.finish();
+        }
+    }
+
+    @Override
+    public void datosDescargados(ArrayList<QBBaseCustomObject> datos) {
+
+    }
 }

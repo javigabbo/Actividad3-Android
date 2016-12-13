@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity implements QBAdminListener{
+public class MainActivity extends AppCompatActivity{
 
     TestFragment testFragment;
     RegistroFragment registroFragment;
@@ -64,15 +64,17 @@ public class MainActivity extends AppCompatActivity implements QBAdminListener{
         botonIniciaSesionRegistro.setOnClickListener(controlador);
         botonRegistrarse.setOnClickListener(controlador);
 
+
         EtUsuario = (EditText) testFragment.getView().findViewById(R.id.editTextUsername);
         EtPassw = (EditText) testFragment.getView().findViewById(R.id.editTextPassword);
+
         usuarioReg = (EditText) registroFragment.getView().findViewById(R.id.editTextUsuarioR);
         emailReg = (EditText) registroFragment.getView().findViewById(R.id.editTextEmailR);
         passwReg = (EditText) registroFragment.getView().findViewById(R.id.editTextPasswR);
 
 
 
-        qbAdmin = new QBAdmin(this, this);
+        qbAdmin = new QBAdmin(controlador, this);
         qbAdmin.crearSesion();
 
         cambiaFragment(1);
@@ -103,20 +105,5 @@ public class MainActivity extends AppCompatActivity implements QBAdminListener{
 
 
 
-    @Override
-    public void logeado(boolean blLogeado){
-
-        if (blLogeado){
-            System.out.println("LOGEADO CON EXITO");
-        }else{
-            System.out.println("FALLO AL LOGEAR");
-        }
-
-    }
-
-    @Override
-    public void datosDescargados(ArrayList<QBBaseCustomObject> datos) {
-
-    }
 
 }
