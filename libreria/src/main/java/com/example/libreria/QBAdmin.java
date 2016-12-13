@@ -5,12 +5,18 @@ import android.os.Bundle;
 
 import com.quickblox.auth.QBAuth;
 import com.quickblox.auth.model.QBSession;
+import com.quickblox.core.Consts;
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.QBSettings;
 import com.quickblox.core.exception.QBResponseException;
 import com.quickblox.core.helper.StringifyArrayList;
+import com.quickblox.core.request.QBRequestGetBuilder;
+import com.quickblox.customobjects.QBCustomObjects;
+import com.quickblox.customobjects.model.QBCustomObject;
 import com.quickblox.users.QBUsers;
 import com.quickblox.users.model.QBUser;
+
+import java.util.ArrayList;
 
 
 /**
@@ -84,9 +90,7 @@ public class QBAdmin {
 
             @Override
             public void onSuccess(QBSession session, Bundle params) {
-                // You have successfully created the session
-                //
-                // Now you can use QuickBlox API!
+                System.out.println("Sesion iniciada");
             }
 
             @Override
@@ -97,8 +101,24 @@ public class QBAdmin {
 
     }
 
-    public void selectTabla (){
+    public void selectTabla (int idIdioma){
         //listener.datosDescargados();
+
+        QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
+        requestBuilder.eq("idi", idIdioma);
+
+        QBCustomObjects.getObjects("idiomas", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
+            @Override
+            public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
+                int skip = params.getInt(Consts.SKIP);
+                int limit = params.getInt(Consts.LIMIT);
+            }
+
+            @Override
+            public void onError(QBResponseException errors) {
+
+            }
+        });
     }
 
 }

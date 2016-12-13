@@ -1,8 +1,71 @@
 package com.example.javigabbo.actividad3;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import com.example.libreria.QBAdminListener;
+import com.quickblox.core.Consts;
+import com.quickblox.core.QBEntityCallback;
+import com.quickblox.core.exception.QBResponseException;
+import com.quickblox.core.model.QBBaseCustomObject;
+import com.quickblox.core.request.QBRequestGetBuilder;
+import com.quickblox.customobjects.QBCustomObjects;
+import com.quickblox.customobjects.model.QBCustomObject;
+
+import java.util.ArrayList;
+
 /**
  * Created by Javigabbo on 13/12/16.
  */
 
-public class Controlador2 {
+public class Controlador2 implements View.OnClickListener, QBAdminListener {
+
+    Main2Activity vista;
+    int idIdioma;
+
+    public Controlador2(Main2Activity vista){
+        this.vista = vista;
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        if (v.getId() == vista.btnEspanol.getId()){
+            idIdioma = 1;
+            System.out.println("Español");
+            vista.qbAdmin.selectTabla(idIdioma);
+
+        }else if (v.getId() == vista.btnIngles.getId()){
+            idIdioma = 2;
+            System.out.println("Inglés");
+            vista.qbAdmin.selectTabla(idIdioma);
+        }
+
+    }
+
+    @Override
+    public void logeado(boolean blLogeado) {
+
+    }
+
+    @Override
+    public void registrado(boolean blRegistrado) {
+
+    }
+
+    @Override
+    public void datosDescargados(ArrayList<QBBaseCustomObject> datos) {
+
+        vista.text1.setText(datos.get(1).toString());
+        vista.text2.setText(datos.get(2).toString());
+        vista.btnEspanol.setText(datos.get(3).toString());
+        vista.btnIngles.setText(datos.get(4).toString());
+
+
+    }
+
+
 }
