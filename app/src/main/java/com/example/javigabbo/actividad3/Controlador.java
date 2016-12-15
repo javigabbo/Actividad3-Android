@@ -7,8 +7,10 @@ import android.view.View;
 import com.example.libreria.QBAdmin;
 import com.example.libreria.QBAdminListener;
 import com.quickblox.core.model.QBBaseCustomObject;
+import com.quickblox.customobjects.model.QBCustomObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Javigabbo on 28/11/16.
@@ -72,7 +74,7 @@ public class Controlador implements View.OnClickListener, QBAdminListener{
     }
 
     @Override
-    public void datosDescargados(ArrayList<QBBaseCustomObject> datos) {
+    public void datosDescargados(HashMap<Integer, String> datos) {
 
     }
 

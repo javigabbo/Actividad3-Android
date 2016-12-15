@@ -3,6 +3,7 @@ package com.example.javigabbo.actividad3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.libreria.QBAdminListener;
 import com.quickblox.core.Consts;
@@ -14,6 +15,7 @@ import com.quickblox.customobjects.QBCustomObjects;
 import com.quickblox.customobjects.model.QBCustomObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Javigabbo on 13/12/16.
@@ -57,15 +59,13 @@ public class Controlador2 implements View.OnClickListener, QBAdminListener {
     }
 
     @Override
-    public void datosDescargados(ArrayList<QBBaseCustomObject> datos) {
+    public void datosDescargados(HashMap<Integer, String> datos) {
 
         vista.text1.setText(datos.get(1).toString());
         vista.text2.setText(datos.get(2).toString());
         vista.btnEspanol.setText(datos.get(3).toString());
         vista.btnIngles.setText(datos.get(4).toString());
 
-
     }
-
 
 }

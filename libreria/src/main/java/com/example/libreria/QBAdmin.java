@@ -17,6 +17,7 @@ import com.quickblox.users.QBUsers;
 import com.quickblox.users.model.QBUser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -102,7 +103,7 @@ public class QBAdmin {
     }
 
     public void selectTabla (int idIdioma){
-        //listener.datosDescargados();
+
 
         QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
         requestBuilder.eq("idi", idIdioma);
@@ -110,8 +111,18 @@ public class QBAdmin {
         QBCustomObjects.getObjects("idiomas", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
             @Override
             public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
-                int skip = params.getInt(Consts.SKIP);
-                int limit = params.getInt(Consts.LIMIT);
+
+                HashMap <Integer, String> palabras = new HashMap<Integer, String>();
+
+
+                for (int i = 0; i < customObjects.size(); i++){
+
+                    palabras.put((Integer)customObjects.get(i).getFields().get("idp"),customObjects.get(i).getFields().get("valor").toString());
+
+                }
+
+                listener.datosDescargados(palabras);
+
             }
 
             @Override
