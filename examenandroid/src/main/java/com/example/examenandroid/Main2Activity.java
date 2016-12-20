@@ -21,10 +21,11 @@ public class Main2Activity extends AppCompatActivity {
     QBAdmin qbAdmin;
     Controlador2 controlador2;
 
-    TextView textView4;
+    TextView textView4, textoNoticia, titulo;
 
     Button btnEspanol, btnIngles;
     Button btnPolitica, btnDeportes, btnMusica, btnPeliculas, btnTecnologia, btnVideojuegos;
+    Button noticia1, noticia2, noticia3;
 
 
     @Override
@@ -51,6 +52,14 @@ public class Main2Activity extends AppCompatActivity {
         btnTecnologia = (Button) fragment1.getView().findViewById(R.id.btnTecnologia);
         btnVideojuegos = (Button) fragment1.getView().findViewById(R.id.btnVideojuegos);
 
+        noticia1 = (Button) fragment2.getView().findViewById(R.id.button);
+        noticia2 = (Button) fragment2.getView().findViewById(R.id.button2);
+        noticia3 = (Button) fragment2.getView().findViewById(R.id.button3);
+
+
+        titulo = (TextView) fragment3.getView().findViewById(R.id.textViewTitulo);
+        textoNoticia = (TextView) fragment3.getView().findViewById(R.id.textViewNoticia);
+
         btnEspanol.setOnClickListener(controlador2);
         btnIngles.setOnClickListener(controlador2);
         btnPolitica.setOnClickListener(controlador2);
@@ -59,6 +68,9 @@ public class Main2Activity extends AppCompatActivity {
         btnPeliculas.setOnClickListener(controlador2);
         btnTecnologia.setOnClickListener(controlador2);
         btnVideojuegos.setOnClickListener(controlador2);
+        noticia1.setOnClickListener(controlador2);
+        noticia2.setOnClickListener(controlador2);
+        noticia3.setOnClickListener(controlador2);
 
 
 

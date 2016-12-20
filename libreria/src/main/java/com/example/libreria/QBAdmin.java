@@ -164,4 +164,35 @@ public class QBAdmin {
     }
 
 
+
+    public void selectNoticia (String noticia){
+
+
+        QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
+        requestBuilder.eq("texto", noticia);
+
+        QBCustomObjects.getObjects("noticias", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
+            @Override
+            public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
+
+                HashMap <Integer, String> palabras = new HashMap<Integer, String>();
+
+
+                for (int i = 0; i < customObjects.size(); i++){
+
+                    palabras.put(i, customObjects.get(i).getFields().get("noticia").toString());
+
+                }
+
+                listener.datosDescargados(palabras);
+
+            }
+
+            @Override
+            public void onError(QBResponseException errors) {
+
+            }
+        });
+    }
+
 }
