@@ -18,7 +18,7 @@ public class Controlador implements View.OnClickListener, QBAdminListener {
 
     public Controlador(MainActivity vista){
         this.vista = vista;
-        //intent = new Intent(vista, Main2Activity.class);
+        intent = new Intent(vista, Main2Activity.class);
     }
 
 

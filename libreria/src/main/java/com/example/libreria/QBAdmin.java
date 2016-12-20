@@ -132,4 +132,36 @@ public class QBAdmin {
         });
     }
 
+
+    public void selectTema (String tema){
+
+
+        QBRequestGetBuilder requestBuilder = new QBRequestGetBuilder();
+        requestBuilder.eq("tema", tema);
+
+        QBCustomObjects.getObjects("noticias", requestBuilder, new QBEntityCallback<ArrayList<QBCustomObject>>() {
+            @Override
+            public void onSuccess(ArrayList<QBCustomObject> customObjects, Bundle params) {
+
+                HashMap <Integer, String> palabras = new HashMap<Integer, String>();
+
+
+                for (int i = 0; i < customObjects.size(); i++){
+
+                    palabras.put(i, customObjects.get(i).getFields().get("texto").toString());
+
+                }
+
+                listener.datosDescargados(palabras);
+
+            }
+
+            @Override
+            public void onError(QBResponseException errors) {
+
+            }
+        });
+    }
+
+
 }
