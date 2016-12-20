@@ -59,10 +59,12 @@ public class MainActivity extends AppCompatActivity{
         botonRegistrar = (Button) testFragment.getView().findViewById(R.id.btnRegistro);
         botonIniciaSesionRegistro = (Button) registroFragment.getView().findViewById(R.id.btnIniciaSesionRegistro);
         botonRegistrarse = (Button) registroFragment.getView().findViewById(R.id.btnRegistrarse);
+
         botonLogin.setOnClickListener(controlador);
         botonRegistrar.setOnClickListener(controlador);
         botonIniciaSesionRegistro.setOnClickListener(controlador);
         botonRegistrarse.setOnClickListener(controlador);
+
 
 
         EtUsuario = (EditText) testFragment.getView().findViewById(R.id.editTextUsername);
